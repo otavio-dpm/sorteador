@@ -20,11 +20,6 @@ class _HomePageState extends State<HomePage> {
   {
 int i = 0 ; 
 while(i < 5 ){
-
-
-
-
-
     setState(() {
       imagemSelecionada[0] = Random().nextInt(images.length);
       imagemSelecionada[1] = Random().nextInt(images.length);
