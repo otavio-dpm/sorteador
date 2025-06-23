@@ -18,64 +18,74 @@ class _HomePageState extends State<HomePage> {
 
   void sortear()
   {
-int i = 0 ; 
-while(i < 5 ){
-    setState(() {
-      imagemSelecionada[0] = Random().nextInt(images.length);
-      imagemSelecionada[1] = Random().nextInt(images.length);
-      imagemSelecionada[2] = Random().nextInt(images.length);
-sleep(Duration(milliseconds:500));
-    });
+    int i = 0;
+    while (i < 5) {
+      setState(() {
+        imagemSelecionada[0] = Random().nextInt(images.length);
+        imagemSelecionada[1] = Random().nextInt(images.length);
+        imagemSelecionada[2] = Random().nextInt(images.length);
+        sleep(Duration(milliseconds: 500));
+      });
+      
+      i++; // mesma coisa que i = i +1;
+    }
+  
+    
 
-    i++;
+    if (imagemSelecionada[0] == imagemSelecionada[1] && imagemSelecionada[1] == imagemSelecionada[2]) {
 
-  } 
-}
+      /// aqui vai somar
+
+      showDialog(
+        context: context, 
+        builder: (context) => AlertDialog(
+          title: Text("Parabens"),
+          content: Text("voce ganhou"),  
+        )
+      );
+    } else {
+      // aqui vai diminuir
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    final larguraTela = MediaQuery.of(context).size.width - 30;
+    final larguraTela = MediaQuery.of(context).size.width -30;
     final larguraImagem = larguraTela / 3;
     return Scaffold(
       appBar: AppBar(
         title: Text(
           "Baleia",
-          style: TextStyle(
-            fontSize: 30,
-            backgroundColor: const Color.fromARGB(255, 247, 247, 247),
-          ),
+          style: TextStyle(fontSize: 30, backgroundColor: Colors.blue),
         ),
-        backgroundColor: const Color.fromARGB(255, 23, 30, 36),
+        backgroundColor: Colors.blue,
       ),
-      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+      backgroundColor: Colors.amber,
       floatingActionButton: FloatingActionButton.large(
         onPressed: () {
-
           sortear();
         },
-        child: Icon(Icons.next_plan_sharp),
-        backgroundColor: const Color.fromARGB(255, 23, 30, 36),
-        foregroundColor: const Color.fromARGB(255, 224, 220, 220),
+        child: Icon(Icons.catching_pokemon),
+        backgroundColor: Colors.cyan,
+        foregroundColor: Colors.black,
       ),
       body: Column(
         children: [
-          Row(
-            //LINHA
+          Row( //LINHA
             mainAxisAlignment: MainAxisAlignment.center, //alinhamento
-            children: [
-              //FILHOS
+            children: [ //FILHOS
               Image.asset(
                 images[imagemSelecionada[0]],
                 width: larguraImagem,
                 height: 200,
               ),
-              SizedBox(width: 15),
+              SizedBox(width: 15,),
               Image.asset(
                 images[imagemSelecionada[1]],
                 width: larguraImagem,
                 height: 200,
               ),
-              SizedBox(width: 15),
+              SizedBox(width: 15,),
               Image.asset(
                 images[imagemSelecionada[2]],
                 width: larguraImagem,
@@ -86,8 +96,8 @@ sleep(Duration(milliseconds:500));
         ],
       ),
 
+       
 
-      
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
