@@ -16,15 +16,18 @@ class _HomePageState extends State<HomePage> {
 
   List<int> imagemSelecionada = [0, 0, 0];
 
+//int somatorio = 0 ;
+double somatorio = 100.0;
+
   void sortear()
   {
     int i = 0;
     while (i < 5) {
       setState(() {
-        imagemSelecionada[0] = Random().nextInt(images.length);
-        imagemSelecionada[1] = Random().nextInt(images.length);
-        imagemSelecionada[2] = Random().nextInt(images.length);
-        sleep(Duration(milliseconds: 500));
+        imagemSelecionada[0] = Random().nextInt(2);
+        imagemSelecionada[1] = Random().nextInt(2);
+        imagemSelecionada[2] = Random().nextInt(2);
+        //sleep(Duration(milliseconds: 500));
       });
       
       i++; // mesma coisa que i = i +1;
@@ -35,6 +38,7 @@ class _HomePageState extends State<HomePage> {
     if (imagemSelecionada[0] == imagemSelecionada[1] && imagemSelecionada[1] == imagemSelecionada[2]) {
 
       /// aqui vai somar
+      somatorio = somatorio + 100.0;
 
       showDialog(
         context: context, 
@@ -43,8 +47,17 @@ class _HomePageState extends State<HomePage> {
           content: Text("voce ganhou"),  
         )
       );
-    } else {
+    } 
+     else {
       // aqui vai diminuir
+  somatorio = somatorio - 100.0;
+showDialog(
+  context: context,
+  builder: (context) => AlertDialog(
+    title: Text("Que pena!"),
+    content: Text("Tente novamente!") ,
+  )
+);
     }
   }
 
@@ -60,7 +73,7 @@ class _HomePageState extends State<HomePage> {
         ),
         backgroundColor: Colors.blue,
       ),
-      backgroundColor: Colors.amber,
+      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
       floatingActionButton: FloatingActionButton.large(
         onPressed: () {
           sortear();
@@ -93,6 +106,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ],
           ),
+          Text(somatorio.toString())
         ],
       ),
 
