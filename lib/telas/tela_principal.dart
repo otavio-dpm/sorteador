@@ -86,7 +86,7 @@ showDialog(
         children: [
           Row( //LINHA
             mainAxisAlignment: MainAxisAlignment.center, //alinhamento
-            children: [ //FILHOS
+            children: [ //FILHOSAdvertisement
               Image.asset(
                 images[imagemSelecionada[0]],
                 width: larguraImagem,
@@ -106,7 +106,9 @@ showDialog(
               ),
             ],
           ),
-          Text(somatorio.toString())
+          Text("Pontuação: " + somatorio.toString(), 
+          style:TextStyle(fontSize: 30,color:Colors.blue,fontWeight: FontWeight.bold)  
+          ,)
         ],
       ),
 
