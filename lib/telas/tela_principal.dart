@@ -68,7 +68,7 @@ showDialog(
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Baleia",
+          "times do Rio de Janeiro",
           style: TextStyle(fontSize: 30, backgroundColor: Colors.blue),
         ),
         backgroundColor: Colors.blue,
